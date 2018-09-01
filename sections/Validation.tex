@@ -1,0 +1,61 @@
+\subsection{Program Validation and Verification}
+\label{ss:progr-valid-verif}
+
+Tell us how you tested the system and why you believe it works.
+Describe the Quality Management Plan for your project, that is,
+software testing plan. The plan should indicate the types of testing
+that was performed and detail how they were done. This must include
+the reasons on why the chosen testing protocol was considered
+effective.
+
+Create a table that summarizes the testing plan (see Table
+\ref{tab:test-plan}).
+
+\begin{table}[h!]
+  \centering
+\caption{Summary Testing Plan. A table caption goes above the table.}
+
+\begin{tabular}[t]{|p{8cm}|p{7cm}|} \hline
+
+  \textbf{Process} & \textbf{Technique} \\ \hline 1. Class
+    Testing: test methods and state behaviour of classes & Random,
+    Partition and White-Box Tests \\ \hline 2. Integration Testing:
+    test the
+    interaction of sets of classes & Random and Behavioural Testing \\
+    \hline 3. Validation Testing: test whether customer requirements
+    are satisfied & Use-case based black box and Acceptance tests \\
+    \hline 4. System Testing: test the behaviour of the system as part
+    of a larger environment & Recovery, security, stress and
+    performance tests \\ \hline
+
+\end{tabular}
+
+\label{tab:test-plan}
+\end{table}
+Describe all the steps taken to validate the correctness of the
+program.
+
+If you had user tests then say what you did and what the results
+were. Describe why these test data were chosen (what test conditions
+the data was testing).  Table \ref{tab:tests} provides an example of
+the sorts of results we are looking for. The full detail of the test
+runs should be appended to the report.
+
+\begin{table}[h!]
+  \centering
+\caption{A table of tests. A table caption goes above the table.}
+
+  \begin{tabular}[t]{|p{5.5cm}|p{3cm}|p{3cm}|p{3cm}|} \hline \textbf{Data Set
+    and reason for its choice} & \multicolumn{3}{c|}{\textbf{Test Cases}}\\
+    \cline{2-4} & \emph{Normal Functioning} & \emph{Extreme boundary cases} &
+    \emph{Invalid Data (program should not crash)} \\ \hline Preliminary test
+    (see Appendix 3) & Passed & n/a & Fell over \\\hline &&&\\ \hline
+    &&&\\ \hline
+  \end{tabular}
+
+\label{tab:tests}
+\end{table}
+
+Follow your table of results with a discussions of them highlighting
+how useful and usable your system is for its intended purpose.
+

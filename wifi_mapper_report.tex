@@ -1,0 +1,78 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  Capstone Project Template that tries to save a few trees %%%
+%%%  Edwin Blake 22 Aug 2013                                  %%%
+%%%		1 Aug 2014 (revised)                          %%% 
+%%%             10 Aug 2015                                   %%%
+%%%  see also                                                 %%%
+%%% http://ravirao.wordpress.com/2005/11/19/latex-tips-to-meet-publication-page-limits/  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper]{article}
+\usepackage{times}
+\usepackage{fancyhdr}           % Allows better control over headers and footers
+%\usepackage{layout}            % use with \layout to see the page layout for
+%debugging purposes.
+\usepackage[margin=2.5cm]{geometry}  %   set the margins using the
+                                %   geometry package (which is much
+                                %   the easiest way of doing this).
+\usepackage[pdftex]{graphicx}   %   Pictures (means you have to
+                                %   produce pdf output via pdflatex)
+\usepackage[small,compact]{titlesec}   % Try to reduce the white space
+                                % latex loves so much
+\titlelabel{\thetitle. \quad}   % Reduce space around section heads
+                                % and add a full stop after the number
+\pagestyle{fancy}               % Invoke fancy headers
+
+\renewcommand{\abstractname}{\vskip -5mm}  %  Change name of Abstract
+                                %  to nothing and loose some of the
+                                %  excessive white space
+\begin{document}
+
+\title{Guidelines for Capstone Project Report\\Using \LaTeXe} \date{}
+\author{Clayton Sibanda\\Department of Computer Science\\SBNCLA002@myuct.ac.za
+\and David Kheri\\Department of Computer Science\\KHRDAV001@myuct.ac.za
+\and Meluleki Dube\\Department of Computer Science\\DBXMEL004@myuct.ac.za}
+
+%%%  Set the headers via fancyhdr package
+\lhead{Capstone Project Report using \LaTeXe}  % Short title for running head
+\chead{}
+\rhead{1st August, 2014}   %  Fixed running head of the date
+\lfoot{}
+\cfoot{\thepage}    %  add page number as centre footer.
+\rfoot{}
+\renewcommand{\headrulewidth}{0.0pt}   % Don't want horizontal line
+                                % under header.
+
+\maketitle
+\thispagestyle{plain}  % First page is plain style headings and
+                       % footers (ie just the page number as footer).
+
+\begin{abstract}
+  This document outlines the requirements for the final report for the
+  Computer Science Capstone Project Report and describes the use of
+  the \LaTeXe for that purpose. Please follow this precise template
+  for your final report.
+\end{abstract}
+
+\input{sections/lat_intro}
+
+\input{sections/approach}
+%Clayton
+\input{sections/Abstract}
+%Clayton
+\input{sections/Introduction}
+%Meluleki Dube
+\input{sections/Requirements}
+
+\input{sections/Implemantation}
+
+\input{sections/Validation}
+
+\input{sections/conclusions}
+
+\input{sections/manual}
+
+\input{sections/conclude}
+
+\input{sections/code_elig}
+\end{document}
