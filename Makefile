@@ -1,5 +1,4 @@
 COMPILER = pdflatex
-UMLC = plantuml
 BUILDDIR = build
 OUTPUT = wifi_mapper_report.pdf
 SRC = wifi_mapper_report.tex
@@ -9,7 +8,7 @@ SRC = wifi_mapper_report.tex
 compile: $(OUTPUT)
 
 clean:
-	rm -rf $(OUTPUT) $(BUILDDIR)
+	rm -rf $(OUTPUT) $(BUILDDIR) *.aux *.log *.zip
 
 $(OUTPUT): $(SRC) | $(BUILDDIR)
 	$(COMPILER) $(TEX_OPT) $<

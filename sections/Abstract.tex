@@ -1,4 +1,16 @@
-\subsection*{Abstract}
-First you should have an executive summary (or abstract) just a single
-paragraph saying what the results of the project are (at most 200
-words).
+\section*{Abstract}
+The goal of the project is to create a University of Cape Town(UCT) eduroam Wi-Fi Mapper, which is an application to allow the  eduroam users to be able to view the quality/strength of the eduroam signal at different areas/locations on campus. The deliverables required consisted of a android application and a web client application for administration use.
+\paragraph{}The two deliverables needed were produced and their uses are as follows:
+\begin{itemize}
+	\item \textbf{Android Application for users: }This was the application that the basic users will be using. With this the user can see the map of the UCT upper campus with colors over the different areas/zones indicating the signal strengths. The colors used are as follows:
+	\begin{itemize}
+		\item Red: bad signal strength of 0\% - 30\%
+		\item Orange: poor signal 30\%- 50\%
+		\item Yellow: average signal strength 50\% - 60\%
+		\item Light: Green Good signal strength 60\% - 80 \%
+		\item Dark:	 Green Excellent signal strength 80\% - 100\%
+	\end{itemize}
+	The user phones are also used to record Wi-Fi strengths of the different location areas together and send it to a database hosted on Firebase to update the average Wi-Fi strength of the whole area. If the Wi-Fi name is not eduroam the data is disregarded.
+	
+	\item \textbf{Web Client}The Web Client has the view of the map which shows the strengths of the different areas. It also provides the functionality for creating reports for the Information Communication Technology Services(ICTS) to monitor how the Wi-Fi strengths are at different signals.
+\end{itemize}
