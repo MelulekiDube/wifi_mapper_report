@@ -1,5 +1,34 @@
+\newpage
 \section{Implementation}
+The major components of the application included, the database, the phone application and the web application version of the application. The application was implemented without a server. The implementation included a cloud database hosted on a third party computer in this case firebase. The phone application was developed for android phones to target the majority of users on campus as per the client's requirements. The Android application was therefore created in Java. The web application was created using JavaScript. Below follows the discussions of these components together with how the they came about and why they were settled on.
+
+\subsection*{Database}
+Firebase, a NoSQL cloud database was used as the database option. 
+Since a NoSQL database was used, this means that the data in the database was stored as large JSON documents. This helped in reduce the number of deliverable that were to be delivered and hence aided in helping the developers put more focus into other aspects of the problem spectrum. This also reduced the number of resources required to complete the project. The alternative to this would have required a server and a database. The server would have required to be constantly monitored and always on taking data from users and updating it on the database as well as sending new data to the users. With the current approach, we only have a cloud-hosted database that is hosted on Google servers that both applications will be getting data from and sending data to. The database will handle the updating of all users currently connected to it with the new relevant information and as well on the users request give provide the users with the data to populate the menu. The advantages of this approach include the following:
+\begin{itemize}
+	\item There is no need for a server since firebase database will be able to act both as a server and as a persistent storage tool at the same time. It will assume the role of the server when it needs update the other clients connected to it of new data changes or send the client the data on the database on opening of the application so as to populate the map. This also means there is no stressing about the hosting environment also.
+	\item Firebase provide the connected users with realtime updates. This implies that when a value is updated by one user will be sent immediately to the other connected users.
+\end{itemize}
+\subsubsection*{Database Design}
+ During the development cycle, the database had two main designs that where showed to the client. The first design was based on the miscommunication of the client requirements. In this design, the database only stored Location objects together with the signal strengths recorded for that location were stored. This is shown in the figure below
+ \begin{figure}
+ 	\centering
+ 	\includegraphics[width=0.7\linewidth]{images/first_db}
+ 	\caption{Showing the first design of the database developed.}
+ 	\label{fig:firstdb}
+ \end{figure}
+As can be seen, there is not much structure in the way the was being stored. Each record had to have an id which made it unique so as to allow better queries. A time stamp was also added to the records on when being written to the database so as to allow future features to use it when they want to filter the strengths based on time. The location was stored as longitude and latitude objects.
+\paragraph{}The new database design now also include zone/area objects being stored. This store a list of 4 coordinates that define an area,  the average strength of that area based on location points that are under that area that have recorded data, and lastly the name of the area. This design is shown below in next figure.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/2nd_db}
+	\caption[]{Showing the added document for storing area objects.}
+\end{figure}
+The initial design was still used to maintain the list of all locations that have had data recorded from so as to be able to give the view of the places where the data was recorded for a WLAN zone if needed
 Now we get to the details. 
+
+\subsubsection*{Android application}
+The android application was written in Java using the Android Studio tools. The minimum Android version supported in the application was Android 5 API level 21. This version for android was installed in atleast 71\% of the phones of people using android. The reason it was selected to be the minimum supported version was to manage to reach a large population of people at the same time taking advantage of the new features that are in the new APIs which may include better management of resources and security issues for instance. The application built had only one Activity which was the main activity as well. This activity consisted of a map of UCT segmented into different areas based on the buildings and has each color with a specific color that relates into the signal strength in that area. 
 
 \begin{itemize}
 \item Describe your data structures and be sure to illustrate them
@@ -18,4 +47,3 @@ Now we get to the details.
 \item A description of any special programming techniques or libraries
   used.
 \end{itemize}
-

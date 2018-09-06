@@ -8,7 +8,7 @@ SRC = wifi_mapper_report.tex
 compile: $(OUTPUT)
 
 clean:
-	rm -rf $(OUTPUT) $(BUILDDIR) *.aux *.log *.zip
+	rm -rf $(OUTPUT) $(BUILDDIR) *.aux *.log *.zip *.gz
 
 $(OUTPUT): $(SRC) | $(BUILDDIR)
 	$(COMPILER) $(TEX_OPT) $<
