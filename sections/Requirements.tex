@@ -29,26 +29,29 @@ class hierarchy diagram.
 
 \subsection{Design Overview}
 \label{ss:design-overview}
+\paragraph{}This Section gives an overview of the system which entails showing how the system interacts with other systems in delivery of functionality to the user and introduce the basic functionality expected from the System,It will also describe what type of stakeholders will interact with the system and what functionality each should expect,finally explain the assumptions and constraints for the system 
 
-The next section is an overview of your design. The system design has
-to be justified in terms of the expected behaviour of the final
-product. 
+\paragraph{}They are mainly Two ways users can interact with the System that is through a mobile Application(Android Only) and Web Application.
 
-If you produced a design class diagram put it here.
+\paragraph{}Mobile Application will need to communicate with the phone's GPS system so as to obtain a user's Location.The functionality provided by GPS is crucial as it pinpoints exactly which WLAN Zone data is collected and ensures accurate aggregate Data is displayed on each WLAN zone.
 
-\begin{figure}[h!]
-  \center{\includegraphics[scale=0.8]{images/architecture.png}}
-  \caption{An architecture diagram. Caption to go below figure}
-  \label{fig:architecture}
+\paragraph{}Wifi Manager will also be needed by the mobile application so as to obtain Wifi Strength of the router to which the mobile phone is connected to a certain point in time,as both the Wifi Strength and Location to which this data is obtained are the main pieces of information driving the System.
+
+\paragraph{}Since this is a data-centric Application,that means data needs to be stored in a database,both Web Application and Mobile Application will communicate with the database but in slightly different ways.Mobile Application will both query and send data to and from the database while
+the web Application will be restricted to just querying data from the database for displaying purposes.
+
+\paragraph{}Query Manager is used by both Mobile so as to validate the data collected corresponds to a WLAN zone or else its not written to the database and handles requests of data from both web and Mobile Application to obtain data to display.
+
+\paragraph{}Both Mobile and Web Application use the Mapping System so as to display a Map to the user which includes data collected from the users stored in the database aggregated into different WLAN zones so as to provide appropriate information to the user.
+
+\paragraph{}Cluster System is required by the Mapping System so as to cluster Data points collected which are very close to each other so as to prevent clutter on the Map which is undesirable to the user(Clustering occurs only at high zoom level).  
+
+\paragraph{}Reporting system is used by the Web Client to generate a report which will provide useful information based on the collected data stored in the database.   
+ 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/Architecture}
+	\caption{Architecture Diagram}
+	\label{fig:architecture}
 \end{figure}
-
-You must present the overall architecture of the system together with
-an architecture diagram. You may choose what kind of diagram best
-suits your project but we would expect a layered architecture diagram
-(see Figure \ref{fig:architecture}) unless there is a good reason for
-some other kind of diagram. It need not be a formal UML diagram as
-long as it conveys all the necessary information clearly.
-
-You should then (in subsections) cover the algorithms and the data
-organisation used and why they were considered the best. 
 
