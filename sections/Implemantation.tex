@@ -30,46 +30,52 @@ Now we get to the details.
 \subsection*{Android application}
 The android application was written in Java using the Android Studio tools. The minimum Android version supported in the application was Android 5 API level 21. This version for android was installed in atleast 71\% of the phones of people using android. The reason it was selected to be the minimum supported version was to manage to reach a large population of people at the same time taking advantage of the new features that are in the new APIs which may include better management of resources and security issues for instance. The application built had only one Activity which was the main activity as well. This activity consisted of a map of UCT segmented into different areas based on the buildings and has each color with a specific color that relates into the signal strength in that area. 
 
+\subsection*{Web Application}
+\paragraph{}Wifi mapper comes with a web client that consists of three views and these are map view, login view and the report view.The technologies used to build the app are HTML,CSSS and JavaScript. A few frameworks were also include to improve team productivity.The map view displays a google map that contains the WLAN ZONEs over UCT upper campus. The app gets the map from the google map api obtained by including a script on the html file of the view.
+
+\paragraph{}The map view is set up such that the map fills the screen of the device fully. After rendering the map, the app asynchronously gets data from the firebase database using the 'on' firebase listener. The app sets the location center and defualt zoom. In order to get the data from the database firebase was added as a dependence on the app.After obtaining the data from the database, the app displays colored polygons on top of respective WLAN ZONEs. The colors of the polygons are calculated using the data returned by the database. Five colors are used to represent ranges between 0 and 100. 
+
+\paragraph{}The map view also contains a button used to generate report for special users. On clicking this button, the login view is displayed on the screen.The login view consists of a login form with two input fields and a login button. The two input fields are for username and password. The password input field is such that the password is hidden while the user is typing it. 
+
+\paragraph{}The login button has an onLogin listener attached to it. When the button is clicked/tapped an onLogin event is fired that sends a request to the server to check if the user is authenticated to view the report. If the user is authenticated then the app displays the wifi mapper report.
+
+\paragraph{}The report is used to display special statistics to the user. The app calculates the number of locations and signal strength then displays them at the top of the view. Number of WLAN ZONEs is also calculated and displayed together with the number of locations.
+
+\paragraph{}Following the calculated numbers, the report displays bar ,pie and bubble charts for the data on firebase. The first bar chart shows the average wifi strength against the WLAN ZONEs on the map. The bar chart is followed by a pie chart that shows a different representation of the average wifi strength against the WLAN.
+
+\paragraph{}The app uses a library called chart.js to convert the data from javascript objects to charts. Calculations for the color are done by a single function for all the charts. The calculation is such the only bright colors are used for all chart components.The report view was developed using modern frameworks like bootstrap that makes the report responsive accross all devices.
+
+\subsection*{Data Structure used}
+
+During Query Phase when the application is initially started data is obtained using different listener threads as data has to be obtained asynchronously from firebase and both individual Locations and WLAN Zones are stored each in a List Structure and a HashMap is created mapping each ID of WLANZone with its Actual representation through a Polygon object that will make it easier to update zones whenever new data is obtained that corresponds to that zone 
+
+\subsection*{On Location Added Event} 
+\paragraph{}Any change on the database will be caught by the listener threads and if its a location the object will be obtained and a marker will be added on the map at the corresponding location      
+
+\subsection*{on Area Changed Event} 
+\paragraph{}Any update on an area object will also be caught by listener and since the object might change but its ID is still same its used to query the HashMap and get the polygon object thats directly on the Map and change its color and signal strength to reflect the new average 
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/DataStructures}
+	\caption{Area ID Polygon Mapping operations}
+	\label{fig:datastructures}
+\end{figure}
+
+
+\subsection*{User Interface}
+\paragraph{}WLANZones are clearly defined on the map as essentially each zone covers a building and other common areas to students which will enable the user accurately know a WLAN Zone and its corresponding wifi Strength based on the color Scheme explained shown below 
+
 \begin{itemize}
-\item Describe your data structures and be sure to illustrate them
-  with a diagram.
-
-\item If your user interface was a key feature describe how that was
-  implemented.
-
-\item Discuss the function of the most significant methods in each
-  class. This may well require flowcharts, or sequence diagrams, in
-  some cases.
-
-\item Any special relationship between the classes (e.g. friends) and
-  why they exist.
-
-\item A description of any special programming techniques or libraries
-  used.
+	\item Red : 0 - 29 
+	\item Orange : 30 - 49 
+	\item Yellow : 50 - 59 
+	\item Light Green : 60 - 79 
+	\item Green : 80 - 100
 \end{itemize}
 
-\subsection*{Web Application}
-Wifi mapper comes with a web client that consists of three views and these are map view, login view and the report view.  
+\paragraph{}The colors were chosen as they easily map to what users are already used to in their day to day.The map used was a Satelilte Map as it did not have any extra clutter such as building names and their markers,as Zones in the application have names associated with them
+\newline
 
-The technologies used to build the app are HTML,CSSS and JavaScript. A few frameworks were also include to improve team productivity.
-
-The map view displays a google map that contains the WLAN ZONEs over UCT upper campus. The app gets the map from the google map api obtained by including a script on the html file of the view.
-
-The map view is set up such that the map fills the screen of the device fully. After rendering the map, the app asynchronously gets data from the firebase database using the 'on' firebase listener. The app sets the location center and defualt zoom. In order to get the data from the database firebase was added as a dependence on the app. 
-
-After obtaining the data from the database, the app displays colored polygons on top of respective WLAN ZONEs. The colors of the polygons are calculated using the data returned by the database. Five colors are used to represent ranges between 0 and 100. 
-
-The map view also contains a button used to generate report for special users. On clicking this button, the login view is displayed on the screen.
-
-The login view consists of a login form with two input fields and a login button. The two input fields are for username and password. The password input field is such that the password is hidden while the user is typing it. 
-
-The login button has an onLogin listener attached to it. When the button is clicked/tapped an onLogin event is fired that sends a request to the server to check if the user is authenticated to view the report. If the user is authenticated then the app displays the wifi mapper report.
-
-The report is used to display special statistics to the user. The app calculates the number of locations and signal strength then displays them at the top of the view. Number of WLAN ZONEs is also calculated and displayed together with the number of locations.
-
-Following the calculated numbers, the report displays bar ,pie and bubble charts for the data on firebase. The first bar chart shows the average wifi strength against the WLAN ZONEs on the map. The bar chart is followed by a pie chart that shows a different representation of the average wifi strength against the WLAN.
-
-The app uses a library called chart.js to convert the data from javascript objects to charts. Calculations for the color are done by a single function for all the charts. The calculation is such the only bright colors are used for all chart components.
-
-The report view was developed using modern frameworks like bootstrap that makes the report responsive accross all devices.
-
+  
