@@ -27,7 +27,7 @@ As can be seen, there is not much structure in the way the was being stored. Eac
 The initial design was still used to maintain the list of all locations that have had data recorded from so as to be able to give the view of the places where the data was recorded for a WLAN zone if needed
 Now we get to the details. 
 
-\subsubsection*{Android application}
+\subsection*{Android application}
 The android application was written in Java using the Android Studio tools. The minimum Android version supported in the application was Android 5 API level 21. This version for android was installed in atleast 71\% of the phones of people using android. The reason it was selected to be the minimum supported version was to manage to reach a large population of people at the same time taking advantage of the new features that are in the new APIs which may include better management of resources and security issues for instance. The application built had only one Activity which was the main activity as well. This activity consisted of a map of UCT segmented into different areas based on the buildings and has each color with a specific color that relates into the signal strength in that area. 
 
 \begin{itemize}
@@ -47,3 +47,29 @@ The android application was written in Java using the Android Studio tools. The 
 \item A description of any special programming techniques or libraries
   used.
 \end{itemize}
+
+\subsection*{Web Application}
+Wifi mapper comes with a web client that consists of three views and these are map view, login view and the report view.  
+
+The technologies used to build the app are HTML,CSSS and JavaScript. A few frameworks were also include to improve team productivity.
+
+The map view displays a google map that contains the WLAN ZONEs over UCT upper campus. The app gets the map from the google map api obtained by including a script on the html file of the view.
+
+The map view is set up such that the map fills the screen of the device fully. After rendering the map, the app asynchronously gets data from the firebase database using the 'on' firebase listener. The app sets the location center and defualt zoom. In order to get the data from the database firebase was added as a dependence on the app. 
+
+After obtaining the data from the database, the app displays colored polygons on top of respective WLAN ZONEs. The colors of the polygons are calculated using the data returned by the database. Five colors are used to represent ranges between 0 and 100. 
+
+The map view also contains a button used to generate report for special users. On clicking this button, the login view is displayed on the screen.
+
+The login view consists of a login form with two input fields and a login button. The two input fields are for username and password. The password input field is such that the password is hidden while the user is typing it. 
+
+The login button has an onLogin listener attached to it. When the button is clicked/tapped an onLogin event is fired that sends a request to the server to check if the user is authenticated to view the report. If the user is authenticated then the app displays the wifi mapper report.
+
+The report is used to display special statistics to the user. The app calculates the number of locations and signal strength then displays them at the top of the view. Number of WLAN ZONEs is also calculated and displayed together with the number of locations.
+
+Following the calculated numbers, the report displays bar ,pie and bubble charts for the data on firebase. The first bar chart shows the average wifi strength against the WLAN ZONEs on the map. The bar chart is followed by a pie chart that shows a different representation of the average wifi strength against the WLAN.
+
+The app uses a library called chart.js to convert the data from javascript objects to charts. Calculations for the color are done by a single function for all the charts. The calculation is such the only bright colors are used for all chart components.
+
+The report view was developed using modern frameworks like bootstrap that makes the report responsive accross all devices.
+
