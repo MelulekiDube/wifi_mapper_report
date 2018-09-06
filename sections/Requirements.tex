@@ -14,19 +14,6 @@ The list of the requirements for the application where as follows:
 	\item Real-time receiving of data being updated in the database.
 	\item Speed up on the rendering of the areas and their strengths on the map.
 \end{itemize}
-
-
-
-The next section deals with the analysis of your system. Cover the
-functional, non-functional and usability requirements. This is where
-you present your use case narratives and diagrams. 
-
-Discuss the major analysis artefacts that you produced. We will expect
-you to produce at least one overall description of the architecture
-used in your system as a diagram, either here or below (see Section
-\ref{ss:design-overview}). You may also want to include an analysis
-class hierarchy diagram.
-
 \subsection*{Use case}
 Below is a use case diagram to show the different operation that can be done on the system and the actors who are responsible for performing these actions. Firstly, there is a need to discuss the different users of the systems and the different systems that are used by our system. These make up the actors involved in the system. The different actors and their level of interaction with the application are listed below:
 \newline\textbf{Primary Actor}
@@ -150,10 +137,17 @@ The main use case for the system is update WLAN Zone information as it is the sp
 		\end{enumerate}
 	\end{enumerate} \\\hline
 \end{longtable}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/SeqDiagram_Wifi_Mapper}
+	\caption{Sequence Diagram}
+	\label{fig:seqdiagramwifimapper-1}
+\end{figure}
 
+\newpage
 \subsection*{Design Overview}
 \label{ss:design-overview}
-\paragraph{}This Section gives an overview of the system which entails showing how the system interacts with other systems in delivery of functionality to the user and introduce the basic functionality expected from the System,It will also describe what type of stakeholders will interact with the system and what functionality each should expect,finally explain the assumptions and constraints for the system 
+\paragraph{}This Section gives an overview of the system which entails showing how the system interacts with other systems in delivery of functionality to the user and introduce the basic functionality expected from the System,It will also describe what type of stakeholders will interact with the system and what functionality each should expect.
 
 \paragraph{}They are mainly Two ways users can interact with the System that is through a mobile Application(Android Only) and Web Application.
 
